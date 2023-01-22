@@ -1,0 +1,75 @@
+<html>
+<head>
+	<title>Login And Resgistration Form</title>
+  <link href="css/login.css" rel="stylesheet">
+</head>
+<body>
+	<div class="loginAndRegister">
+
+			 <div class="form-box">
+					<div class="button-box">
+							<div id="btn"></div>
+							<button type="button" class="toggle-btn"onclick="login()">Log In</button>
+							<button type="button" class="toggle-btn"onclick ="SignUp()">Sign Up</button>
+
+					</div>
+
+					<form id= "login" class="group-input">
+							<input type = "text" class="input-field" placeholder="Username" required>
+							<input type = "text" class="input-field" placeholder="Password" required>
+							<button type="submit" class="submit-btn">Log In</button>
+					</form>
+
+					<form id = "Sign-Up" class="group-input">
+							<input type = "text" class="input-field" placeholder="First Name" required>
+							<input type = "text" class="input-field" placeholder="Last Name" required>
+							<input type = "text" class="input-field" placeholder="Username" required>
+							<input type = "text" class="input-field" placeholder="Password" required>
+							<button type="submit" class="submit-btn">Sign Up</button>
+					</form>
+
+			</div>
+
+			<div class="Logo">
+					<svg viewBox="0 0 455 455",startOffset="50%">
+		    			<path id="curve" d="M 10 80 Q 95 0 180 80" />
+			    			<text width="700">
+			      				<textPath xlink:href="#curve",startOffset="50%">
+			        				Pair of Dice
+			      				</textPath>
+			    			</text>
+		  		</svg>
+			</div>
+
+
+	</div>
+
+	<div class="LogoTop">
+			<img src="C:/Users/emman/OneDrive/Desktop/LAMP Stack/logo-removebg-preview.png" alt="">
+
+	</div>
+
+	<div class="tagLine">
+		<h1>A subsidiary of PARADISE PAGES INC. </h1>
+	</div>
+
+
+	<script>
+			var x = document.getElementById("login");
+			var y = document.getElementById("Sign-Up");
+			var z = document.getElementById("btn");
+
+			function SignUp(){
+				x.style.left = "-400px";
+				y.style.left = "50px";
+				z.style.left = "110px";
+			}
+			function login(){
+				x.style.left = "50px";
+				y.style.left = "450px";
+				z.style.left = "0px";
+			}
+	</script>
+
+</body>
+</html>
