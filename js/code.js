@@ -108,19 +108,15 @@ function doLogout()
 	window.location.href = "index.html";
 }
 
-function addContact()
+function addColor()
 {
-	let newContactFirstName = document.getElementById("contactTextFirst").value;
-	let newContactLastName = document.getElementById("contactTextLast").value;
-	let newContactEmail = document.getElementById("contactTextEmail").value;
-	let newContactPhone = document.getElementById("contactTextPhone").value;
+	let newColor = document.getElementById("colorText").value;
+	document.getElementById("colorAddResult").innerHTML = "";
 
-	document.getElementById("contactAddResult").innerHTML = "";
-
-	let tmp = {color:newContactFirstName,userId,userId}; //need to edit JSON/API to take 4 values instead of one i believe
+	let tmp = {color:newColor,userId,userId};
 	let jsonPayload = JSON.stringify( tmp );
 
-	let url = urlBase + '/AddContact.' + extension;
+	let url = urlBase + '/AddColor.' + extension;
 	
 	let xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
@@ -143,7 +139,7 @@ function addContact()
 	
 }
 
-function searchContact()
+function searchColor()
 {
 	let srch = document.getElementById("searchText").value;
 	document.getElementById("colorSearchResult").innerHTML = "";
