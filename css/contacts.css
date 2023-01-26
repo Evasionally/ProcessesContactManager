@@ -1,0 +1,218 @@
+@import url('https://fonts.googleapis.com/css2?family=Signika+Negative:wght@500&display=swap');
+
+
+
+* {
+    
+    background-color: #282d49;
+    font-family: "Signika Negative", sans-serif;
+
+}
+
+/*From navstyle.css*/
+.li_a_button_group
+{
+    font-family: "Signika Negative", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    color: #edf0f1;
+    text-decoration: none;
+}
+
+header
+{
+    padding-top: 0%;
+    margin: 0px;
+    display: flex;
+    justify-content: flex-end; /*makes everything go to the right */
+    align-items: center; /*may want to change to top */
+    padding: 0.25% 5%;
+
+    /*overflow:hidden;
+    background-color: #19191b;*/
+
+}
+
+.logo
+{
+    cursor: pointer;
+    width: 10%;
+    height: 10%;
+    margin-right: auto;
+}
+
+.nav_links
+{
+    list-style: none;
+    
+}
+
+.nav_links li
+{
+    display: inline-block;
+    padding: 0px 20px;
+    
+}
+
+.nav_links li a
+{
+    transition: all 0.3s ease 0s;
+}
+
+.nav_links li a:hover /*when mouse is over a nav button*/
+{
+    color: #0088a9;
+}
+
+#logout_button
+{
+    padding: 9px 25px;
+    background-color: rgba(0, 136, 169, 1);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+
+#logout_button:hover
+{
+    background-color: rgba(0, 136, 169, 0.8); /*different alpha val*/
+
+}
+
+/*From contactstyle.css*/
+.content-table
+{
+    border-collapse: collapse;
+    margin: 25px 0;
+    margin-left: 8px;
+    font-size: 0.9em;
+    min-width: 400px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    
+    /*Gives the table a border*/
+    border: 10px solid rgb(95, 47, 16);;
+
+    /*Gives the table rounded corners*/
+    border-radius: 15px;
+
+    /*This represents the color of the table BORDER*/
+    background-color: rgb(95, 47, 16);
+    
+}
+
+/*For top row of table (table head)*/
+.content-table thead tr
+{
+    background-color: #009879;
+    color: rgb(0, 0, 0);
+    text-align: left;
+
+    /*border: 10px solid #009879;
+    border-radius: 15px;*/
+}
+
+
+.content-table th
+{
+    padding: 12px 15px;
+    background-color: #009879;
+
+    
+
+}
+
+.content-table td
+{
+    padding: 12px 15px;
+    background-color: #ffffff;
+
+}
+
+/*Lines between each row of the table*/
+.content-table tbody tr
+{
+    border-bottom: 1px solid #dddddd;
+}
+
+.content-table tbody tr:nth-of-type(even)
+{
+    background-color: #f3f3f3;
+}
+
+.content-table tbody tr:last-of-type 
+{
+    border-bottom: 2px solid #009879; /*makes bottom border green */
+}
+
+.content-table tbody tr.active-row 
+{
+    font-weight: bold;
+    color: #009879;
+}
+
+/*Button stuff from Emmanuel's login pg*/
+#btn
+{
+
+    padding: 9px 25px;
+    background: linear-gradient(to right, #ff105f,#ffad06 );
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+    background-color: rgba(0, 136, 169, 1); /*different alpha val*/
+
+
+}
+
+#btn:hover
+{
+    color:black;
+}
+
+/*#btn:hover
+{
+    background: linear-gradient(to left, #ff105f,#ffad06);
+    transition: all 0.3s ease 0s;
+
+    background-color: rgba(0, 136, 169, 0.8); /*different alpha val
+
+
+}*/
+
+#search_bar
+{
+
+    float: left;
+    padding: 0px;
+    border: 5px solid rgb(95, 47, 16);
+    border-radius: 20px;
+    margin-top: 8px;
+    margin-bottom: 4px;
+    margin-left: 0px;
+    font-size: 17px;
+    background-color: white;
+    width: 20em;
+    height: 3em;
+}
+
+#search_btn
+{
+    padding: 9px 25px;
+    background: linear-gradient(to right, #ff105f,#ffad06 );
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+    background-color: rgba(0, 136, 169, 1); /*different alpha val*/
+    float: left;
+    margin-top: 14px;
+    margin-left: 5px;
+}
+
+#search_instructions
+{
+    margin-left: 8px;
+}
