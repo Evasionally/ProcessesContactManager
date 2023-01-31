@@ -2,11 +2,13 @@
 <head>
 	<title>Login And Resgistration Form</title>
   <link href="css/login.css" rel="stylesheet">
+	<script type = "text/javascript" src = "js/code.js"></script>
 </head>
 <body>
 	<div class="loginAndRegister">
 
 			 <div class="form-box">
+
 					<div class="button-box">
 							<div id="btn"></div>
 							<button type="button" class="toggle-btn"onclick="login()">Log In</button>
@@ -15,18 +17,22 @@
 					</div>
 
 					<form id= "login" class="group-input">
-							<input type = "text" class="input-field" placeholder="Username" required>
-							<input type = "text" class="input-field" placeholder="Password" required>
+							<span id="loginResult"></span>
+							<input type = "text" id="userName" class="input-field" placeholder="Username" required>
+							<input type = "text" id="password" class="input-field" placeholder="Password" required>
 							<button type="submit" class="submit-btn">Log In</button>
 					</form>
 
 					<form id = "Sign-Up" class="group-input">
-							<input type = "text" class="input-field" placeholder="First Name" required>
-							<input type = "text" class="input-field" placeholder="Last Name" required>
-							<input type = "text" class="input-field" placeholder="Username" required>
-							<input type = "text" class="input-field" placeholder="Password" required>
+						  <span id="SignUpResult"></span>
+							<input type = "text" id= "firstName" class="input-field" placeholder="First Name" required>
+							<input type = "text" id= "lastName" class="input-field" placeholder="Last Name" required>
+							<input type = "text" id= "userName2" class="input-field" placeholder="Username" required>
+							<input type = "text" id= "password2" class="input-field" placeholder="Password" required>
 							<button type="submit" class="submit-btn">Sign Up</button>
 					</form>
+
+
 
 			</div>
 
