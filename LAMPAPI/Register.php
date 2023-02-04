@@ -1,10 +1,11 @@
 <?php
 	$inData = getRequestInfo();
-	
-	$fName = $inData["fName"];
-	$lName = $inData["lName"];
-	$login = $inData["login"];
-	$password = $inData["password"];
+ 
+ $id = 0;
+ $fName = $inData["firstName"];
+ $lName = $inData["lastName"];
+ $login = $inData["login"];
+ $password = $inData["password"];
 
 	$conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
 	if ($conn->connect_error) 
@@ -16,9 +17,17 @@
 		$stmt = $conn->prepare("INSERT into Users (FirstName, LastName, Login, Password) VALUES(?,?,?,?)");
 		$stmt->bind_param("ssss", $fName, $lName, $login, $password);
 		$stmt->execute();
+    $stmt = $conn->prepare("SELECT ID FROM Users WHERE Login=? AND Password =?");
+    $stmt->bind_param("ss", $inData["login"], $inData["password"]);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+		if( $row = $result->fetch_assoc()  )
+		{
+			returnWithInfo( $row['ID'] );
+		}
 		$stmt->close();
 		$conn->close();
-		returnWithError("");
 	}
 
 	function getRequestInfo()
@@ -35,6 +44,11 @@
 	function returnWithError( $err )
 	{
 		$retValue = '{"error":"' . $err . '"}';
+		sendResultInfoAsJson( $retValue );
+	}
+ function returnWithInfo( $id )
+  {
+		$retValue = '{"id":' . $id . '}';
 		sendResultInfoAsJson( $retValue );
 	}
 	
