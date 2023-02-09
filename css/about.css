@@ -1,0 +1,267 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+@font-face
+{
+    font-family: "Casino";
+    src: url("../css/Casino.ttf") format("truetype");
+}
+
+* {
+    
+    font-family: Casino;
+    src: url("../css/Casino.ttf") format("truetype");    
+    
+    box-sizing: border-box;
+    
+}
+
+body{
+ 
+    background-color: black;
+    background-image: url("/images/diceroll.gif");
+    align-content: center;
+    min-height: 100vh;
+    background-position: center;
+    background-size:cover;
+}
+
+section{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 70vh;
+    width: 75vw;
+    margin: 0 auto;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 12px
+}
+
+.image{
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    border-radius: 12px 0 0 12px;
+}
+
+.image img{
+height:50vh;
+margin:50px auto
+
+}
+
+.content{
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 0  12px 12px 0;
+    color: #FF9800;
+}
+
+.content h2{
+    text-transform: uppercase;
+    font-size: 36px;
+    letter-spacing: 6px;
+    opacity: 0.9;
+}
+
+/*Honestly this might not be necessary - adds the line between about us and our names*/
+.content span{
+    height: 0.5px;
+    width: 80px;
+      background: #777;
+    margin: 30px 0;
+}
+
+.content p{
+    padding-bottom: 15px;
+    font-weight: 300;
+    opacity: 0.7;
+    width: 80%;
+    text-align: center;
+    margin: 0 auto;
+    line-height: 1.7;
+    color:#ffffff
+
+
+}
+
+.icons li{
+    display: block;
+    padding: 5px;
+    margin: 5px;
+}
+
+.icons li i{
+    font-size: 26px;
+    opacity: 0.8;
+}
+.icons li i:hover{
+    color: #C850C0;
+    cursor: pointer;
+}
+
+@media(max-width: 900px){
+
+  section
+  {
+    grid-template-columns: 1fr;
+    width: 100%;
+    border-radius: none;
+  }
+  
+  image{
+        height: 100vh;
+        border-radius: 12px 12px;
+    }
+    .content{
+        height: 100vh;
+        border-radius: 12px 12px;
+    }
+    .content h2{
+        font-size: 20px;
+        margin-top: 50px;
+    }
+    .content span{
+        margin: 20px 0;
+    }
+    .content p{
+        font-size: 14px;
+    }
+
+    .icons li i{
+        font-size: 15px;
+    }
+
+
+}
+/*From contact.css (FOR NAVBAR)*/
+.li_a_button_group
+{
+    font-family: Casino;    
+    src: url("../css/Casino.ttf") format("truetype");
+    font-size: 30px;
+    color: #edf0f1;
+    text-decoration: none;
+}
+
+header
+{
+    background: rgba(0,0,0,0.75);
+    margin: 0px;
+    display: flex;
+    justify-content: flex-end; /*makes everything go to the right */
+    align-items: center; /*may want to change to top */
+    padding-right: 3%;
+    /*overflow:hidden;
+    background-color: #19191b;*/
+    padding-bottom: 0;
+}
+
+.logo
+{
+    cursor: pointer;
+    width: 10%;
+    height: 10%;
+    margin-right: 20px;
+}
+
+.nav_links
+{
+    list-style: none;
+    
+}
+
+.nav_links li
+{
+    color: #ff920a;
+    display: inline-block;
+    padding: 0px 20px;
+    font-size: 30;
+    text-shadow: 0 0 5px #c56302;
+}
+
+.nav_links li a
+{
+    transition: all 0.3s ease 0s;
+}
+
+.nav_links li a:hover /*when mouse is over a nav button*/
+{
+    color: #ff920a;
+}
+
+#logout_button
+{
+    padding: 9px 25px;
+    background-color: rgba(0, 136, 169, 1);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+
+#logout_button:hover
+{
+    background-color: rgb(255 146 10); /*different alpha val*/
+
+}
+
+header > p
+{
+    margin-right:auto;
+    color: #ff920a;
+    font-size: 40;
+    text-shadow: 0 0 5px #c56302;
+}
+
+/*Button stuff from Emmanuel's login pg*/
+#btn
+{
+    padding: 9px 25px;
+    background: #ac1515;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+    color: white;
+    font-size: 18px;
+}
+
+#btn:hover
+{
+    color:black;
+}
+
+#clown_img
+{
+    align-self:center;
+    padding: 20px;
+    border-radius: 30px;
+}
+
+
+.github
+{
+    color: edf0f1;
+    display: inline-block;
+    padding: 0px 20px;
+    font-size: 30;
+
+    text-decoration: none;
+}
+
+.github a
+{
+    text-decoration: none;
+    color: edf0f1;
+    text-shadow: 0 0 5px #c56302;
+
+
+
+    transition: all 0.3s ease 0s;
+}
+
+.github a:hover /*when mouse is over a nav button*/
+{
+    color: #ff920a;
+}
