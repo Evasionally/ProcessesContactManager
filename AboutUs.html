@@ -1,44 +1,64 @@
 <html>
-<head>
-	<title>About Us</title>
-  <link href="css/AboutUs.css" rel="stylesheet">
-</head>
-<body>
-		<div class="section">
-			<div class="container">
-				<div class="content-section">
-					<div class="title">
-						  <h1>About Us</h1>
-					</div>
-					<div class="content">
-							<h3>BTS (Korean: 방탄소년단; RR: Bangtan Sonyeondan;</h3>
-							<p>BTS (Korean: 방탄소년단; RR: Bangtan Sonyeondan; lit. Bulletproof Boy Scouts), also
-								 known as the Bangtan Boys, is a South Korean boy band formed in 2010. The band consists of Jin,
-								 Suga, J-Hope, RM, Jimin, V, and Jungkook, who co-write and co-produce the majority of their material.
-								 Originally a hip hop group, their musical style has evolved to incorporate a wide range of genres,
-								 while their lyricism has focused on subjects including mental health, the troubles of school-age youth
-								 and coming of age, loss, the journey towards self-love, individualism, and the consequences of fame and
-								 recognition. Their discography and adjacent work has also referenced literature, philosophy and psychological
-								 concepts, and includes an alternate universe storyline.</p>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>About Us </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="/css/about.css">
+    	<script type="text/javascript" src="js/code.js"></script>
 
-					</div>
+        <script type="text/javascript">
+            document.addEventListener('DOMContentLoaded', function() 
+            {
+                readCookie();
+            }, false);
+        </script>
+    </head>
 
-					<div class="button">
-							<button type="button" class="button">Back</button>
-					</div>
+    <body>
 
+        <!--HEADER WITH NAVBAR-->
+        <header>
+            <img class="logo" src="images/logo-removebg-preview.png" alt="logo" onclick="location.href='/contact.html'">
+            <p> Pair-A-Dice Contact Manager</p>
+            <nav>
+                <ul class="nav_links">
+                    <li class="li_a_button_group"><a href="/contact.html" class="li_a_button_group">Contacts</a></li>
+                    <li class="li_a_button_group"><a href="/about.html" class="li_a_button_group">About</a></li>
+                    <li id="userName"></li>
+                </ul>
+            </nav>
 
-				</div>
-				<div class="image-section">
-						<img src="C:/Users/emman/OneDrive/Desktop/LAMP Stack/top-10-most-popular-k-pop-boy-groups.png">
-				</div>
+            <!--Logout button-->
+            <a class="cta" href="#"><button class="li_a_button_group" id="btn" onclick="doLogout()">Log Out</button></a>
 
+        </header>
 
-			</div>
-		</div>
+        <br />
 
+        <section>
+            <div class = "image">
+               <img id="clown_img" src="/images/aboutuspicture.jpg">
+            </div>
 
+            <div class = "content">
+                <h2>About Us</h2>
+                <span><!-- line here --></span>
+                <p>Front End : Andy Gelfo, Emmanuel Levasseur
+                <br>Data Base : Thomas Nguyen
+                <br>API : Ved Arnav Singh , Andrew Anchieta
+                <br>Project Manager : Evan Daniel</p>
 
+                <span><!-- line here --></span>
 
-</body>
+                <h3 class="github">  
+                    <a href="https://github.com/Evasionally/ProcessesContactManager">Our GitHub</a>     
+                </h3>
+                
+            </div>
+        </section>
+        
+        <br><br>
+
+    </body>
 </html>
