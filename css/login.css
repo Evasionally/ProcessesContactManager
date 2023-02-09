@@ -1,132 +1,144 @@
 body{
-  margin : 0;
-  padding: 0;
-
-}
-.loginAndRegister{
-  margin: 0px 0;
-  padding: 5px 0;
-  height: 100%;
-  width: 100%;
-  background-position: center;
-  background-size:cover;
-  position: fixed;
-  background-image: url("C:/Users/emman/OneDrive/Desktop/LAMP Stack/rolly.gif");
-  background-attachment: fixed;
-
-}
-.form-box{
-  width: 350px;
-  height: 500px;
-  position: fixed;
-  top: 150px;
-  right: 250px;
-  margin: 6% auto;
-  background: #000;
-  padding: 5px;
-  overflow: hidden;
-  background-color: rgba(0, 0, 0, 0.8);
-  border-radius: 30px;
-}
-.button-box{
-  width: 220px;
-  margin: 35px auto;
-  position: relative;
-  box-shadow: 0 0 20px 9px #ff61241f;
-  border-radius: 30px;
-}
-.toggle-btn{
-  padding: 10px 30px;
-  cursor: pointer;
-  background: transparent;
-  border: 0;
-  outline: none;
-  position: relative;
-  color: white;
-}
-#btn{
-  top: 0;
-  left:0;
-  position: absolute;
-  width: 110px;
-  height: 100%;
-  background: linear-gradient(to right, #ff105f,#ffad06 );;
-  border-radius: 30px;
-  transition: .3s;
-}
-.group-input{
-  top: 120  px;
-  position: absolute;
-  width: 280px;
-  transition: .3s;
-}
-
-.input-field{
-  width: 100%;
-  padding: 10px ;
-  margin: 20px 0;
-  border: 1px solid #999;
-  border-radius: 15px;
-  outline-color: invert;
-  background: white;
-  text-align: center;
-}
-.submit-btn{
-  width: 60%;
-  padding: 10px 30px;
-  cursor: pointer;
-  display: block;
-  margin: auto;
-  background: linear-gradient(to right, #ff105f,#ffad06 );
-  border 0;
-  outline: none;
-  border-radius: 30px;
-}
-#login {
-  left: 50px;
-}
-#Sign-Up{
-  left : 450px;
-}
-@font-face {
-    font-family: myFirstFont;
-    src: url("C:/Users/emman/OneDrive/Desktop/LAMP Stack/Casino.ttf");
-}
-.logo{
-    font-family: myFirstFont;
-    font-size: 35px;
+    margin : 0;
+    padding: 0;
+  
+  }
+  .loginAndRegister{
+    margin: 0px 0;
+    padding: 5px 0;
+    height: 100%;
+    width: 100%;
+    background-position: center;
+    background-size:cover;
+    position: fixed;
+    background-image: url('../images/rolly.gif');
+    background-attachment: fixed;
+  
+  }
+  .form-box{
+    width: 350px;
+    height: 500px;
+    position: fixed;
+    top: 150px;
+    left: 61.5%;
+    margin: 6% auto;
+    background: #000;
+    padding: 5px;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 30px;
+  }
+  .button-box{
+    width: 220px;
+    margin: 35px auto;
     position: relative;
-    left: 50%;
-    pointer-events: none;
-}
-.LogoTop{
-  bottom: -250px;
-  left: 200px;
-  width: 500px;
-  height: 500px;
-  position: relative;
-}
-path{
-  fill: transparent;
-}
-text {
-  fill: #FF9800;
-}
-.tagLine{
-  position: relative;
-  font-size: 10px;
-  text-decoration-color: white;
-  width: 370px;
-  left: 300px;
-  bottom: -50px;
-  border-radius: 5px;
-  color: #FF9800;
-}
-#loginResult{
-  display: inline-block;
-  font-size: 0.8em;
-  width: 90%;
-  text-align: center;
-  margin-top: 2%;
-  color: white;
-}
+    box-shadow: 0 0 20px 9px #ff61241f;
+    border-radius: 30px;
+  }
+  .toggle-btn{
+    padding: 10px 30px;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    outline: none;
+    position: relative;
+    color: white;
+    font-family: myFirstFont;
+    src: url('../css/Casino.ttf');
+    font-size: 12pt;
+    text-shadow: 0 0 10px #000;
+  }
+  #btn{
+    top: 0;
+    left:0;
+    position: absolute;
+    width: 110px;
+    height: 100%;
+    background: #ac1515;
+    border-radius: 30px;
+    transition: .3s;
+  }
+  .group-input{
+    top: 120  px;
+    position: absolute;
+    width: 280px;
+    transition: .3s;
+  }
+  
+  .input-field{
+    width: 100%;
+    padding: 10px ;
+    margin: 20px 0;
+    border: 1px solid #999;
+    border-radius: 15px;
+    outline-color: invert;
+    background: white;
+    text-align: center;
+  }
+  .submit-btn{
+    width: 60%;
+    padding: 10px 30px;
+    cursor: pointer;
+    display: block;
+    margin: auto;
+    background: #ac1515;
+    border: 0;
+    outline: none;
+    border-radius: 30px;
+    color: white;
+    font-family: myFirstFont;
+    src: url('../css/Casino.ttf');
+    font-size: 16pt;
+    text-shadow: 0 0 10px #000;
+  }
+  #login {
+    left: 50px;
+  }
+  #Sign-Up{
+    left : 450px;
+  }
+  @font-face {
+      font-family: myFirstFont;
+      src: url('../css/Casino.ttf');
+  }
+  .logo{
+      font-family: myFirstFont;
+      font-size: 35px;
+      position: relative;
+      left: 50%;
+      pointer-events: none;
+  }
+  .LogoTop{
+    bottom: -415px;
+    left: 22px;
+    width: 500px;
+    height: 500px;
+    position: relative;
+  }
+  path{
+    fill: transparent;
+  }
+  text {
+    fill: #FF9800;
+    text-shadow: 0 0 10px #fff;
+
+  }
+  .tagLine{
+    font-family: myFirstFont;
+    src: url('../css/Casino.ttf');
+    position: fixed;
+    font-size: 15px;
+    text-decoration-color: white;
+    left: 110px;
+    bottom: 170px;
+    color: #FF9800;
+    text-shadow: 0 0 20px #000;
+  }
+  #loginResult{
+    display: inline-block;
+    font-size: 0.8em;
+    width: 90%;
+    text-align: center;
+    margin-top: 2%;
+    color: white;
+  }
