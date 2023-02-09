@@ -1,0 +1,90 @@
+<html>
+	<head>
+		<title>Login And Resgistration Form</title>
+	  <link href="css/login.css" rel="stylesheet">
+		<script type = "text/javascript" src = "js/code.js"></script>
+		<script type = "text/javascript" src = "js/md5.js"></script>
+	</head>
+	<body>
+		<div class="loginAndRegister">
+	
+				 <div class="form-box">
+	
+						<div class="button-box">
+								<div id="btn"></div>
+								<button type="button" class="toggle-btn"onclick="login()">Log In</button>
+								<button type="button" class="toggle-btn"onclick ="SignUp()">Sign Up</button>
+	
+						</div>
+	
+						<form id= "login" class="group-input">
+								<span id="loginResult"></span>
+								<input type = "text" id="userName" class="input-field" placeholder="Username" required>
+								<input type = "password" id="password" class="input-field" placeholder="Password" required>
+								<button type="reset" class="submit-btn" onclick="doLogin('', '')">Log In</button>
+						</form>
+	
+						<form id = "Sign-Up" class="group-input">
+							  <span id="SignUpResult"></span>
+								<input type = "text" id= "firstName" class="input-field" placeholder="First Name" required>
+								<input type = "text" id= "lastName" class="input-field" placeholder="Last Name" required>
+								<input type = "text" id= "userName2" class="input-field" placeholder="Username" required>
+								<input type = "password" id= "password2" class="input-field" placeholder="Password" required>
+								<button type="reset" class="submit-btn" onclick="doSignup()">Sign Up</button>
+						</form>
+	
+	
+	
+				</div>
+    
+				<div class="Logo">
+						<svg viewBox="0 0 455 455",startOffset="50%">
+							<path id="curve" d="M 20 70 Q 95 0 180 80" />
+								<text width="700">
+						  			<textPath xlink:href="#curve",startOffset="50%">
+										Pair-A-Dice
+									  </textPath>
+								</text>
+					  </svg>
+				</div>
+	
+	
+		</div>
+	 
+	  <div class="DiceLogo">
+		  <div class="LogoTop">
+				  <img src="../images/logo-removebg-preview.png" alt="">
+	  
+		  </div>
+	  
+      <div="tagbox">
+    		  <div class="tagLine">
+    			  <h1>   Your Personal Gambling Manager</h1>
+    		  </div>
+      </div>
+        
+	  </div>
+  
+	  <script>
+	
+		  var x = document.getElementById("login");
+		  var y = document.getElementById("Sign-Up");
+		  var z = document.getElementById("btn");
+	 
+		  function SignUp()
+		  { 
+			  x.style.left = "-400px";
+			  y.style.left = "50px";
+			  z.style.left = "110px";
+		  }
+		  function login()
+		  {    
+			  x.style.left = "50px";
+			  y.style.left = "450px";
+			  z.style.left = "0px";
+		  }
+   
+	   </script>
+	
+	</body>
+	</html>
