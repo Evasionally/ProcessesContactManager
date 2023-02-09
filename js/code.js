@@ -89,6 +89,8 @@ function doSignup()
     let username = document.getElementById("userName2").value;
     let password = document.getElementById("password2").value;
 
+    
+
 	let hash = md5( password );
 
 
@@ -103,9 +105,7 @@ function doSignup()
 
     try {
 
-
         xhr.send(jsonPayload);
-
 
         xhr.onreadystatechange = function () {
             if (this.readyState != 4) {
@@ -124,12 +124,7 @@ function doSignup()
                 alert(url + ' replied 404');
             }
 
-
-
             if (this.status == 200) {
-
-
-                
 
                 let jsonObject = JSON.parse(xhr.responseText);
 
@@ -331,14 +326,42 @@ function validSignUpForm(fName, lName, user, pass)
 async function addContact()
 {
     //Get the fields for the new Contact
-    let newContactName = document.getElementById("newContactFirst").value + " " + document.getElementById("newContactLast").value;
+    let newContactFirstName = document.getElementById("newContactFirst").value;
+    let newContactLastName = document.getElementById("newContactLast").value;
+    let newContactName = newContactFirstName + " " + newContactLastName;
     let newContactEmail = document.getElementById("newContactEmail").value;
     let newContactPhone = document.getElementById("newContactPhone").value;
 
+    let errorText = "";
 
-    //LATER - Ensure that each field is filled out properly
+    //Check to see if there are any form validation errors
+    if(validateName(newContactFirstName) == false)
+    {
+        errorText += "<br>First Name must be non-empty and contain no spaces";
+    }
+    if(validateName(newContactLastName) == false)
+    {
+        errorText += "<br>Last Name must be non-empty and contain no spaces";
+    }
+    if(validateEmail(newContactEmail) == false)
+    {
+        errorText += "<br>Please enter a valid email";
+    }
+    if(validatePhone(newContactPhone) == false)
+    {
+        errorText += "<br>Please enter a valid phone number";
+    }
 
-    document.getElementById("contactAddResult").innerHTML = "";
+    //Boot out of the function early if there were errors
+    if(errorText != "")
+    {
+        document.getElementById("actionStatus").innerHTML = `<br><br><br>${errorText}`;
+        return;
+    }
+
+    //Format phone number
+    newContactPhone = formatPhone(newContactPhone);
+
 
     //Temporary JSON string - field on left, variable on right
     let tmp = {name:newContactName,phone:newContactPhone,email:newContactEmail,userID:userId};
@@ -357,18 +380,18 @@ async function addContact()
         {
             if(this.readyState == 4 && this.status == 200)
             {
-                document.getElementById("contactAddResult").innerHTML = "";
+                document.getElementById("actionStatus").innerHTML = "";
             }
             else
             {
-                document.getElementById("contactAddResult").innerHTML = "Contact not added. ReadyState is " + this.readyState + " and status is " + this.status;
+                document.getElementById("actionStatus").innerHTML = "Contact not added. ReadyState is " + this.readyState + " and status is " + this.status;
             }
         };
         xhr.send(jsonPayload);
     }
     catch(err)
     {
-        document.getElementById("contactAddResult").innerHTML = err.message;
+        document.getElementById("actionStatus").innerHTML = err.message;
     }
 
     //Set fields back to nothing
@@ -379,6 +402,11 @@ async function addContact()
 
     //At the very end of adding a contact, refresh the table of contacts (after waiting 1/4 of a second)
     await new Promise(resolve => setTimeout(resolve, 250));
+    
+    ///Also delete any search text in case the user was searching
+    document.getElementById("search_bar").value = "";
+    
+    //Then grab the contacts
     grabContacts();
 }
 
@@ -387,8 +415,9 @@ function searchContact()
     //Initialize vars & create initially empty search result list
     let srch = document.getElementById("search_bar").value;
     document.getElementById("contact-table-body").innerHTML = "";
-    let contactList = "";
 
+    //Refresh actionStatus in case
+    document.getElementById("actionStatus").innerHTML = "";
 
     //JSON stuff
     let tmp = {search:srch,userId:userId};
@@ -416,6 +445,7 @@ function searchContact()
                 let lastName;
                 let phone;
                 let email;
+                let contactCount = 1;
 
                 //alert(jsonObject.stringify + " " + jsonObject.results);
 
@@ -447,7 +477,7 @@ function searchContact()
                         email = jsonObject.results[i];
 
                         //Add everything to the table
-                        document.getElementById("contact-table-body").innerHTML += "<tr><td>" + firstName + "</td><td>" + lastName + "</td><td>" + email + "</td><td>" + phone + "</td><td><button id='btn'>Edit</button></td><td><button id='btn'>Delete</button></td></tr>";
+                        document.getElementById("contact-table-body").innerHTML += "<tr id='row" + contactCount + "'><td class='contact" + contactCount + "'>" + firstName + "</td><td class='contact" + contactCount + "'>" + lastName + "</td><td class='contact" + contactCount + "'>" + email + "</td><td class='contact" + contactCount + "'>" + phone + "</td><td><button id='btn' class='contact" + contactCount + "' onclick='editContactSetup(this.className)'>Edit</button></td><td><button id='btn' class='contact" + contactCount + "' onclick='deleteContact(this.className)'>Delete</button></td></tr>";
 
                         //Reset vars
                         firstName = "";
@@ -457,6 +487,8 @@ function searchContact()
 
                         //Set counter back to -1 (it will be incremented to 0 right after)
                         counter = -1;
+
+                        contactCount++;
 
                     }
 
@@ -469,7 +501,7 @@ function searchContact()
     }
     catch(err)
     {
-        document.getElementById("contactSearchResult").innerHTML = err.message;
+        document.getElementById("actionStatus").innerHTML = err.message;
     }
 }
 
@@ -564,7 +596,7 @@ function grabContacts()
     }
     catch(err)
     {
-        document.getElementById("contactSearchResult").innerHTML = err.message;
+        document.getElementById("actionStatus").innerHTML = err.message;
     }
 
     //console.log(document.getElementById("contact-table-body").innerHTML);
@@ -585,7 +617,7 @@ function editContactSetup(className)
 
     if(currName != "")
     {
-        alert("Please only edit one contact at a time.");
+        document.getElementById("actionStatus").innerHTML = "<br/><br/><br/><br/>Please only edit one contact at a time";
     }
     else
     {
@@ -602,8 +634,7 @@ function editContactSetup(className)
         document.getElementById(rowClass).innerHTML = `<tr><td><input type='text' value='${currentFirstName}' placeholder='${currentFirstName}' id='newFirst${rowNum}'></td><td><input type='text' value='${currentLastName}' placeholder='${currentLastName}' id='newLast${rowNum}'></td><td><input type='text' value='${currentEmail}' placeholder='${currentEmail}' id='newEmail${rowNum}'></td><td><input type='text' value='${currentPhone}' placeholder='${currentPhone}' id='newPhone${rowNum}'></td><td><button id='save_btn' class=${rowNum} onclick='editContactExecute(this.className)'>Save</button></td><td><button id='cancel_btn' onclick='grabContacts()'>Cancel</button></td></tr>`;
 
 
-        document.getElementById("contactEditResult").innerHTML = "";
-            
+        document.getElementById("actionStatus").innerHTML = "";    
     }
 
 
@@ -619,9 +650,44 @@ function editContactSetup(className)
 
 async function editContactExecute(rowName)
 { 
-    let editContactName = document.getElementById(`newFirst${rowName}`).value + " " + document.getElementById(`newLast${rowName}`).value;
+    let editContactFirstName = document.getElementById(`newFirst${rowName}`).value;
+    let editContactLastName = document.getElementById(`newLast${rowName}`).value;
+    let editContactName = editContactFirstName + " " + editContactLastName;
     let editContactEmail = document.getElementById(`newEmail${rowName}`).value;
     let editContactPhone = document.getElementById(`newPhone${rowName}`).value;
+
+    let errorText = "";
+
+
+    //Check to see if there are any form validation errors
+    if(validateName(editContactFirstName) == false)
+    {
+        errorText += "<br>First Name must be non-empty and contain no spaces";
+    }
+    if(validateName(editContactLastName) == false)
+    {
+        errorText += "<br>Last Name must be non-empty and contain no spaces";
+    }
+    if(validateEmail(editContactEmail) == false)
+    {
+        errorText += "<br>Please enter a valid email";
+    }
+    if(validatePhone(editContactPhone) == false)
+    {
+        errorText += "<br>Please enter a valid phone number";
+    }
+
+    //Boot out of the function early if there were errors
+    if(errorText != "")
+    {
+        document.getElementById("actionStatus").innerHTML = `<br><br><br>${errorText}`;
+
+        return;
+    }
+
+    //Format phone number
+    editContactPhone = formatPhone(editContactPhone);
+
 
 
     //Temporary JSON string - field on left, variable on right
@@ -649,24 +715,30 @@ async function editContactExecute(rowName)
             if(this.readyState == 4 && this.status == 200)
             {
                 //alert("success");
-                document.getElementById("contactEditResult").innerHTML = "";
+                document.getElementById("actionStatus").innerHTML = "";
             }
             else
             {
-                document.getElementById("contactEditResult").innerHTML = "Contact not edited. ReadyState is " + this.readyState + " and status is " + this.status;
+                document.getElementById("actionStatus").innerHTML = "Contact not edited. ReadyState is " + this.readyState + " and status is " + this.status;
             }
         };
         xhr.send(jsonPayload);
     }
     catch(err)
     {
-        document.getElementById("contactEditResult").innerHTML = err.message;
+        document.getElementById("actionStatus").innerHTML = err.message;
     }
 
     //At the very end of adding a contact, refresh the table of contacts (after waiting 1/4 of a second)
     await new Promise(resolve => setTimeout(resolve, 250));
-    grabContacts();
 
+    ///Also delete any search text in case the user was searching
+    document.getElementById("search_bar").value = "";
+    
+    //Then grab the contacts
+    grabContacts();
+    
+    
     currName = "";
       
 }
@@ -682,17 +754,9 @@ async function deleteContact(className)
     let delContactEmail = delElements[2].innerText;
     let delContactPhone = delElements[3].innerText;
 
-    //alert("We're deleting " + delContactName + " " + delContactEmail + " " + delContactPhone + " " + userId);
-
-    //console.log(delContactName + delContactEmail + delContactPhone + "END");
-
-    //console.log("DELETE FROM Contacts WHERE Name = " + delContactName + " AND Phone = " + delContactPhone + " AND Email = " + delContactEmail + " AND UserID = " + userId + ";")
-    //console.log(delContactEmail);
-    //console.log(delContactPhone);
-    //console.log(userId);
 
 
-    document.getElementById("contactDelResult").innerHTML = "";
+    document.getElementById("actionStatus").innerHTML = "";
 
     //Temporary JSON string - field on left, variable on right
     let tmp = {
@@ -709,6 +773,11 @@ async function deleteContact(className)
     //Get the proper PHP url
     let url = urlBase + '/DeleteContact' + extension;
 
+    if(confirm("Are you sure you want to Delete this contact?") == false)
+    {
+        return;
+    }
+
     let xhr = new XMLHttpRequest();
     xhr.open("POST", url, true);
     xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
@@ -716,19 +785,15 @@ async function deleteContact(className)
     try
     {
 
-        //alert("entered try statement");
-
         xhr.onreadystatechange = function()
         {
             if(this.readyState == 4 && this.status == 200)
             {
-                document.getElementById("contactDelResult").innerHTML = "";
-                //alert("delete successful");
+                document.getElementById("actionStatus").innerHTML = "";
             }
             else
             {
-                //alert("Readystate is " + this.readyState + " and status is " + this.status);
-                document.getElementById("contactDelResult").innerHTML = "Contact not deleted. ReadyState is " + this.readyState + " and status is " + this.status;
+                document.getElementById("actionStatus").innerHTML = "Contact not deleted. ReadyState is " + this.readyState + " and status is " + this.status;
             }
         };
         xhr.send(jsonPayload);
@@ -736,15 +801,82 @@ async function deleteContact(className)
     catch(err)
     {
         //alert(err.message);
-        document.getElementById("contactDelResult").innerHTML = err.message;
+        document.getElementById("actionStatus").innerHTML = err.message;
     }
 
     //At the very end of adding a contact, refresh the table of contacts (after waiting 1/4 of a second)
     await new Promise(resolve => setTimeout(resolve, 250));
+
+    ///Also delete any search text in case the user was searching
+    document.getElementById("search_bar").value = "";
+    
+    //Then grab the contacts
     grabContacts();
 }
 
-function showClass(className)
+
+//Given function from W3 Resource to validate an email
+function validateEmail(inputText)
 {
-    alert(className);
+    let mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    if(inputText.match(mailformat))
+    {
+        return true;
+    }
+    else
+    {
+        document.getElementById("actionStatus").innerHTML = "<br><br><br><br>Please enter a valid email";   
+        return false;
+    }
 }
+
+//Given function from W3 Resource to validate a phone number
+function validatePhone(inputText)
+{
+    let phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+    if(inputText.match(phoneno))
+    {
+        return true;      
+    }
+    else
+    {
+        return false;        
+    }
+}
+
+//Function to validate first or last name
+function validateName(inputText)
+{
+    if(inputText == "" || inputText.includes(" "))
+    {
+        return false;
+    }
+    else
+    {
+        return true;
+    }
+}
+
+function formatPhone(inputPhone)
+{
+    inputPhone = (inputPhone);
+
+
+    //First remove any parentheses & dashes
+    inputPhone = inputPhone.replaceAll('-', '');
+    inputPhone = inputPhone.replaceAll('(', '');
+    inputPhone = inputPhone.replaceAll(')', '');
+
+    //Put parentheses & dashes in the correct spot
+    let formattedPhone = `(${inputPhone[0]}${inputPhone[1]}${inputPhone[2]})-${inputPhone[3]}${inputPhone[4]}${inputPhone[5]}-${inputPhone[6]}${inputPhone[7]}${inputPhone[8]}${inputPhone[9]}`;
+
+
+
+    return (formattedPhone);
+}
+
+function aboutUsLoggedIn()
+{
+	document.getElementById("userName").innerHTML = "Logged in as " + firstName + " " + lastName;
+}
+
