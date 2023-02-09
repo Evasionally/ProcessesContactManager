@@ -1,36 +1,45 @@
-@import url('https://fonts.googleapis.com/css2?family=Signika+Negative:wght@500&display=swap');
+@font-face
+{
+    font-family: "Casino";
+    src: url("../css/Casino.ttf") format("truetype");
+}
 
-
+body
+{
+    background-image: url('../images/diceroll.gif');
+    background-position: center;
+    background-size:cover;
+    /*position: fixed;this line prevented scrolling.*/ 
+}
 
 * {
     
-    background-color: #282d49;
-    font-family: "Signika Negative", sans-serif;
-
+    font-family: Casino;
+    src: url("../css/Casino.ttf") format("truetype");
+    
 }
 
 /*From navstyle.css*/
 .li_a_button_group
 {
-    font-family: "Signika Negative", sans-serif;
-    font-weight: 500;
-    font-size: 16px;
+    font-family: Casino;    
+    src: url("../css/Casino.ttf") format("truetype");
+    font-size: 30px;
     color: #edf0f1;
     text-decoration: none;
 }
 
 header
 {
-    padding-top: 0%;
+    background: rgba(0,0,0,0.75);
     margin: 0px;
     display: flex;
     justify-content: flex-end; /*makes everything go to the right */
     align-items: center; /*may want to change to top */
-    padding: 0.25% 5%;
-
+    padding-right: 3%;
     /*overflow:hidden;
     background-color: #19191b;*/
-
+    padding-bottom: 0;
 }
 
 .logo
@@ -38,7 +47,7 @@ header
     cursor: pointer;
     width: 10%;
     height: 10%;
-    margin-right: auto;
+    margin-right: 20px;
 }
 
 .nav_links
@@ -49,9 +58,11 @@ header
 
 .nav_links li
 {
+    color: #ff920a;
     display: inline-block;
     padding: 0px 20px;
-    
+    font-size: 30;
+    text-shadow: 0 0 5px #c56302;
 }
 
 .nav_links li a
@@ -61,7 +72,7 @@ header
 
 .nav_links li a:hover /*when mouse is over a nav button*/
 {
-    color: #0088a9;
+    color: #ff920a;
 }
 
 #logout_button
@@ -76,7 +87,7 @@ header
 
 #logout_button:hover
 {
-    background-color: rgba(0, 136, 169, 0.8); /*different alpha val*/
+    background-color: rgb(255 146 10); /*different alpha val*/
 
 }
 
@@ -85,30 +96,29 @@ header
 {
     border-collapse: collapse;
     margin: 25px 0;
-    margin-left: 8px;
+    margin-left: 250px;
     font-size: 0.9em;
-    min-width: 400px;
+    min-width: 75.2%;
     overflow: hidden;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
     
     /*Gives the table a border*/
-    border: 10px solid rgb(95, 47, 16);;
+    border: 2px solid rgb(0 0 0);
 
     /*Gives the table rounded corners*/
     border-radius: 15px;
 
     /*This represents the color of the table BORDER*/
-    background-color: rgb(95, 47, 16);
-    
-}
+    background-color: rgb(131 5 5);
+    font-size: 1.2vw;
+    }
 
 /*For top row of table (table head)*/
 .content-table thead tr
 {
-    background-color: #009879;
-    color: rgb(0, 0, 0);
+    background-color: #000000;
+    color: rgb(237 237 237);
     text-align: left;
-
     /*border: 10px solid #009879;
     border-radius: 15px;*/
 }
@@ -117,34 +127,31 @@ header
 .content-table th
 {
     padding: 12px 15px;
-    background-color: #009879;
-
-    
-
+    background-color: rgb(131 5 5);
+    text-shadow: 0 0 10px #000000;
+    font-weight: normal;
+    font-size:30px;
 }
 
 .content-table td
 {
     padding: 12px 15px;
-    background-color: #ffffff;
-
+    color: #ff920a;
+    background-color: rgb(28 28 28);
+    text-shadow: 0 0 10px #060606;
 }
 
 /*Lines between each row of the table*/
 .content-table tbody tr
 {
-    border-bottom: 1px solid #dddddd;
+    border-bottom: 2px solid #830505;
 }
 
 .content-table tbody tr:nth-of-type(even)
 {
-    background-color: #f3f3f3;
+    background-color: #1c1c1c;
 }
 
-.content-table tbody tr:last-of-type 
-{
-    border-bottom: 2px solid #009879; /*makes bottom border green */
-}
 
 .content-table tbody tr.active-row 
 {
@@ -155,16 +162,14 @@ header
 /*Button stuff from Emmanuel's login pg*/
 #btn
 {
-
     padding: 9px 25px;
-    background: linear-gradient(to right, #ff105f,#ffad06 );
+    background: #ac1515;
     border: none;
     border-radius: 50px;
     cursor: pointer;
     transition: all 0.3s ease 0s;
-    background-color: rgba(0, 136, 169, 1); /*different alpha val*/
-
-
+    color: white;
+    font-size: 18px;
 }
 
 #btn:hover
@@ -172,47 +177,202 @@ header
     color:black;
 }
 
-/*#btn:hover
-{
-    background: linear-gradient(to left, #ff105f,#ffad06);
-    transition: all 0.3s ease 0s;
-
-    background-color: rgba(0, 136, 169, 0.8); /*different alpha val
-
-
-}*/
 
 #search_bar
 {
-
     float: left;
     padding: 0px;
-    border: 5px solid rgb(95, 47, 16);
-    border-radius: 20px;
+    border: 5px solid rgb(131 5 5);
+    border-radius: 17px;
     margin-top: 8px;
     margin-bottom: 4px;
-    margin-left: 0px;
+    margin-left: 242.6px;
+    margin-right: 5px;
     font-size: 17px;
-    background-color: white;
-    width: 20em;
+    background-color: rgb(0,0,0,0.9);
+    width: 25%;
     height: 3em;
+    text-align: center;
+    color: #e5e5e5;
 }
 
-#search_btn
+
+#search_btn:hover
 {
-    padding: 9px 25px;
-    background: linear-gradient(to right, #ff105f,#ffad06 );
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: all 0.3s ease 0s;
-    background-color: rgba(0, 136, 169, 1); /*different alpha val*/
-    float: left;
-    margin-top: 14px;
-    margin-left: 5px;
+    color:black;
 }
 
 #search_instructions
 {
     margin-left: 8px;
+}
+
+#addContact_btn
+{
+    width: 20px;
+}
+
+#newContactFirst
+{
+    float: left;
+    padding: 0px;
+    border: none;
+    margin-top: 2.7px;
+    margin-left: 5px;
+    margin-right: 10px;
+    font-size: 17px;
+    background-color: rgb(0,0,0,0);
+    width: 20%;
+    height: 2em;
+    text-align: center;
+    color: #e5e5e5;
+}
+
+#newContactLast
+{
+    float: left;
+    padding: 0px;
+    border: none;
+    margin-top: 2.7px;
+    margin-right: 10px;
+    font-size: 17px;
+    background-color: rgb(0,0,0,0);
+    width: 20%;
+    height: 2em;
+    text-align: center;
+    color: #e5e5e5;
+}
+
+#newContactEmail
+{
+    float: left;
+    padding: 0px;
+    border: none;
+    margin-top: 2.7px;
+    margin-right: 10px;
+    font-size: 17px;
+    background-color: rgb(0,0,0,0);
+    width: 20%;
+    height: 2em;
+    text-align: center;
+    color: #e5e5e5;
+}
+
+#newContactPhone
+{
+    float: left;
+    padding: 0px;
+    margin-top: 2.7px;
+    font-size: 17px;
+    border: none;
+    background-color: rgb(0,0,0,0);
+    width: 20%;
+    height: 2em;
+    text-align: center;
+    color: #e5e5e5;
+}
+
+#addContact_btn
+{
+    width: 90px;
+    height: 33px;
+    background: #ac1515;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+    color: white;
+    margin-top: 2.8px;
+
+}
+
+#addContact_btn:hover
+{
+color: black;
+}
+
+#add
+{float: left;padding: 0px;border: 5px solid rgb(131 5 5);border-radius: 17px;margin-top: 8px;margin-bottom: 4px;margin-left: 5px;margin-right: 15px;font-size: 17px;background-color: rgb(0,0,0,0.8);width: 49%;height: 2.4em;text-align: center;}
+
+header > p
+{
+    margin-right:auto;
+    color: #ff920a;
+    font-size: 40;
+    text-shadow: 0 0 5px #c56302;
+}
+
+#cancel_btn
+{
+    padding: 9px 25px;
+    background: #ac1515;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+    color: white;
+    font-size: 18px;
+}
+
+
+#save_btn
+{
+    padding: 9px 25px;
+    background: #ac1515;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+    color: white;
+    font-size: 18px;
+}
+
+#newPhone1, #newPhone2, #newPhone3, #newPhone4, #newPhone5, #newPhone6, #newPhone7, #newPhone8, #newPhone9, #newPhone10, #newPhone1, #newPhone12
+{
+    padding: 0px;
+    border: none;
+    font-size: 20.5px;
+    background-color: rgb(0,0,0,0);
+    height: 2em;
+    text-align: center;
+    color: #e5e5e5;
+}
+
+#newEmail1, #newEmail2,#newEmail3, #newEmail4, #newEmail5, #newEmail6, #newEmail7, #newEmail8, #newEmail9, #newEmail10, #newEmail11, #newEmail12   
+{
+    padding: 0px;
+    border: none;
+    font-size: 20.5px;
+    background-color: rgb(0,0,0,0);
+    height: 2em;
+    text-align: center;
+    color: #e5e5e5;
+}
+
+#newLast1, #newLast2, #newLast3, #newLast4, #newLast5, #newLast6, #newLast7, #newLast8, #newLast9, #newLast10, #newLast11, #newLast12 
+{
+    padding: 0px;
+    border: none;
+    font-size: 20.5px;
+    background-color: rgb(0,0,0,0);
+    height: 2em;
+    text-align: center;
+    color: #e5e5e5;
+}
+
+#newFirst1, #newFirst2, #newFirst3, #newFirst4, #newFirst5, #newFirst6, #newFirst7, #newFirst8, #newFirst9, #newFirst10, #newFirst11, #newFirst12  
+{
+    padding: 0px;
+    border: none;
+    font-size: 20.5px;
+    background-color: rgb(0,0,0,0);
+    height: 2em;
+    text-align: center;
+    color: #e5e5e5;
+}
+
+#actionStatus
+{
+    color:#e5e5e5;
+    text-align: center;
 }
